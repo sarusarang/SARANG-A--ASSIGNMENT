@@ -1,0 +1,85 @@
+.login-main {
+
+    background-image: url('/LOGIN BG.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.login {
+
+    background-color: #ffffff;
+    width: 35%;
+    border-radius: 50px;
+    padding: 1rem 2rem 1rem 2rem;
+
+}
+
+.login-head h3 {
+
+    color: #1F6CAB;
+    font-size: larger;
+    font-weight: 700;
+
+}
+
+.login-form {
+
+    background-color: #00D3EB;
+    width: 90%;
+    border-radius: 22px;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+
+}
+
+.login-form h6 {
+
+    color: #1F6CAB;
+    font-weight: 500;
+    font-size: large;
+}
+
+.login-input input {
+
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 2%;
+
+}
+
+.login-input label {
+
+
+    color: #505050;
+}
+
+.login-btn {
+
+    border: none;
+    outline: none;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #1F6CAB;
+    border-radius: 6px;
+
+}
+
+.foot-link p {
+
+    color: #ffffff;
+    font-size: small;
+    font-weight: 400;
+
+}
+
+.foot-link a {
+
+    color: #00D3EB;
+    font-weight: 500;
+
+}
