@@ -15,6 +15,7 @@
     width: 98%;
     background-color: #FFFFFF;
     height: 78%;
+   
 
 }
 
@@ -295,5 +296,18 @@
 
     font-weight: 700;
     font-size: medium !important;
+
+}
+
+
+
+.preview{
+
+    position: absolute;
+    width: 90%;
+    top: 6rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    z-index: 1000;
 
 }

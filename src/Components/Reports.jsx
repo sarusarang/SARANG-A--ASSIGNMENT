@@ -2,7 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import './Reports.css'
 import { GetOrder, getfilter } from '../SERVICES/AllApi'
-
+import ReportPreview from './ReportPreview'
+import { useSelector, useDispatch } from 'react-redux'
+import { PreviewDownload,Name } from '../STORE/PreviewSlice'
 
 
 
@@ -69,6 +71,14 @@ function Reports() {
     ]
 
 
+    // To Get The States From Redux reducer
+    const { PrevStatus } = useSelector((state) => state.preview)
+
+
+
+    // Dispatch method for redux
+    const Dispatch = useDispatch()
+
 
     // TO CHECK THE FILTER STATE
     const [FilterStatus, setFilterStatus] = useState(false)
@@ -99,6 +109,7 @@ function Reports() {
     const [Searchvalue, setSearchValue] = useState([])
 
     const [searchdata, setsearchdata] = useState("")
+
 
 
 
@@ -183,7 +194,7 @@ function Reports() {
             (!formData.fromDate || item.date >= formData.fromDate) &&
             (!formData.ToDate || item.eta <= formData.ToDate) &&
             (!formData.Referby || item.doctorName.includes(formData.Referby)) &&
-            (!formData.patientName || item.patientName.includes(formData.patientName)) &&
+            (!formData.patientName || item.patientName.toLowerCase().includes(formData.patientName.toLowerCase())) &&
             (!formData.hospitalId || item.hospitalId === formData.hospitalId) &&
             (!formData.status || item.status === formData.status) &&
             (!formData.billno || item.billno === formData.billno)
@@ -250,6 +261,14 @@ function Reports() {
 
 
 
+    // HANDLE REPORT DOWNLOAD
+    const handleReport = (data) => {
+
+        Dispatch(Name(data))
+        Dispatch(PreviewDownload())
+        
+
+    }
 
 
 
@@ -263,6 +282,27 @@ function Reports() {
             <section className='Reports'>
 
 
+
+
+                {/* DOWNLOAD PREV */}
+
+                {
+
+                    PrevStatus &&
+
+                    <div className="preview">
+
+                        <ReportPreview />
+
+                    </div>
+
+                }
+
+
+
+
+
+                {/* FILTER */}
                 <div className='filters'>
 
 
@@ -386,7 +426,7 @@ function Reports() {
 
                                         <label >Status</label>
 
-                                        <select style={{ paddingRight: '4.2rem' }} name="" id="" onChange={(e) => { setFormData({ ...formData, status: e.target.value }) }}>
+                                        <select style={{ paddingRight: '1.8rem' }} name="" id="" onChange={(e) => { setFormData({ ...formData, status: e.target.value }) }}>
 
                                             <option value="">Status</option>
                                             <option value="Ready">Ready</option>
@@ -484,6 +524,7 @@ function Reports() {
                             <tbody>
 
 
+                                {/* Popluating Order Deatils */}
                                 {
 
                                     currentItems.length > 0 && !DataStatus && !searchStatus ?
@@ -538,7 +579,7 @@ function Reports() {
 
 
                                                 <td>
-                                                    <button className='table-btn '><i class="fa-solid fa-download "></i></button>
+                                                    <button className='table-btn' onClick={() => { handleReport(item.patientName) }}><i class="fa-solid fa-download "></i></button>
 
                                                     <button className='table-btn'> <i class="fa-solid fa-message"></i></button>
 
@@ -651,7 +692,7 @@ function Reports() {
 
 
                                                 <td>
-                                                    <button className='table-btn '><i class="fa-solid fa-download "></i></button>
+                                                    <button className='table-btn '><i class="fa-solid fa-download " onClick={() => { handleReport(fl.patientName) }}></i></button>
 
                                                     <button className='table-btn'> <i class="fa-solid fa-message"></i></button>
 
@@ -765,7 +806,7 @@ function Reports() {
 
 
                                             <td>
-                                                <button className='table-btn '><i class="fa-solid fa-download "></i></button>
+                                                <button className='table-btn '><i class="fa-solid fa-download " onClick={() => { handleReport(item.patientName) }}></i></button>
 
                                                 <button className='table-btn'> <i class="fa-solid fa-message"></i></button>
 
@@ -825,28 +866,36 @@ function Reports() {
 
 
                         {/* PAGINATION */}
-                        <div className="pagination">
 
-                            {data.length > itemsPerPage && (
+                        {
 
-                                <ul className="pagination-list">
+                            !searchStatus && !DataStatus &&
 
-                                    {Array.from({ length: Math.ceil(data.length / itemsPerPage) }, (_, i) => (
+                            <div className="pagination">
 
+                                {data.length > itemsPerPage && (
 
-                                        <li key={i} className={currentPage === i + 1 ? 'pagination-item active' : 'pagination-item'}>
-                                            <button onClick={() => paginate(i + 1)}>{i + 1}</button>
-                                        </li>
+                                    <ul className="pagination-list">
 
-
-                                    ))}
+                                        {Array.from({ length: Math.ceil(data.length / itemsPerPage) }, (_, i) => (
 
 
-                                </ul>
-                            )}
+                                            <li key={i} className={currentPage === i + 1 ? 'pagination-item active' : 'pagination-item'}>
+                                                <button onClick={() => paginate(i + 1)}>{i + 1}</button>
+                                            </li>
 
 
-                        </div>
+                                        ))}
+
+
+                                    </ul>
+                                )}
+
+
+                            </div>
+
+
+                        }
 
 
                     </div>
