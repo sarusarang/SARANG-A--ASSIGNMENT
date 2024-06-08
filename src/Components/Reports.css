@@ -1,0 +1,299 @@
+.filters {
+
+    padding: 1rem 3rem 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E4FBFB;
+}
+
+
+
+.Reports {
+
+    margin-left: 1%;
+    width: 98%;
+    background-color: #FFFFFF;
+    height: 78%;
+
+}
+
+.filters h5 {
+
+    color: #1F6CAB;
+    font-weight: 600;
+    font-size: larger;
+
+}
+
+
+.Filter-btn {
+
+    border: none;
+    outline: none;
+    background-color: #1F6CAB;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+
+}
+
+.filter-search {
+
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 71%;
+    background-color: #F4F4F4;
+    border: 2px solid #1F6CAB;
+    border-radius: 8px;
+    color: #1F6CAB;
+
+}
+
+.filter-search i {
+
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.filter-search input {
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+
+
+}
+
+.filter-search input ::placeholder {
+
+    color: #505050B2;
+}
+
+
+
+.filter-form {
+
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #828282;
+
+}
+
+.form-data {
+
+    padding: 1rem 3rem 1rem 3rem;
+
+}
+
+.form-input {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-input input {
+
+    padding: 0.1rem 1rem 0.1rem 1rem;
+
+}
+
+.form-input select {
+
+    padding: 0.1rem 1rem 0.1rem 1rem;
+
+}
+
+.form-input label {
+
+    margin-bottom: 0px !important;
+    margin-right: 2rem;
+}
+
+
+.submit {
+
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #828282;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    background-color: #E4FBFB;
+}
+
+.submit p {
+
+    color: #9E9A9A;
+    margin-bottom: 0px !important;
+    font-weight: 400;
+    font-size: smaller;
+}
+
+.Search-btn {
+
+    background-color: #1F6CAB;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-right: 1.2rem;
+
+}
+
+
+.clear-btn {
+
+    background-color: #F46C09;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+
+}
+
+.table-data {
+
+
+    background-color: #FFFFFF;
+
+}
+
+.table thead th {
+
+    border: none !important;
+}
+
+.table td {
+
+    border-bottom: 2px solid black;
+    padding: 0;
+    padding-top: 0.5rem;
+
+
+}
+
+.table-btn {
+
+    border: none;
+    background-color: transparent;
+    margin-right: 1rem;
+    color: #1F6CAB;
+    font-size: large;
+
+}
+
+
+.status-ready p {
+
+    background-color: #89FFAA;
+    border-radius: 10px;
+    padding: 0px !important;
+    margin-right: 4rem;
+
+}
+
+.status-droped p {
+
+    background-color: #F2A38A;
+    border-radius: 10px;
+    padding: 0px !important;
+    margin-right: 4rem;
+
+}
+
+
+.shadow {
+
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.54) !important;
+
+
+}
+
+
+.status-partial p {
+
+    background-color: #E7F880;
+    border-radius: 10px;
+    padding: 0px !important;
+    margin-right: 4rem;
+
+}
+
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}
+
+.pagination-item {
+    margin: 0 5px;
+}
+
+.pagination-item button {
+    border: none;
+    background-color: #eee;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination-item.active button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.table-hover {
+
+
+    position: relative;
+    
+
+}
+
+.hover-deatils {
+
+    position: absolute;
+    z-index: 1000;
+    background-color: #B8FACE;
+    left: 25rem;
+    padding: 0.3rem 2rem 0.3rem 2rem;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    width: 25%
+
+
+}
+
+.hover-deatils p{
+
+    margin-bottom: 0px !important;
+    margin-right: 1rem;
+    font-size: small;
+    color: #505050;
+    font-weight: 600;
+}
+
+.hover-deatils h6{
+
+    font-weight: 700;
+    font-size: medium !important;
+
+}

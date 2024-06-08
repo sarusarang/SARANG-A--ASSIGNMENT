@@ -2,8 +2,117 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
+import { UserLogin } from '../SERVICES/AllApi'
+import { Toaster, toast } from 'sonner'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+
+
+
+    const navigate = useNavigate()
+
+
+    // TO STORE USERs EMAIL & PASSWORD OF LOGIN
+    const [Data, setData] = useState({
+
+        email: "", password: ""
+
+    })
+
+
+
+    // TO CHECK THE INPUT FEILD IS CORRECT OR NOT
+    const [VaildStatus, setVaildStatus] = useState(false)
+
+
+
+
+    // DUMMY USERS FOR LOGIN 
+    const Users = [
+
+        { email: "user123@gmail.com", password: "12345" }, { email: "ajith123@gmail.com", password: "12345" }
+
+    ]
+
+
+
+    // TO HANDLE LOGIN WHEN THE LOGIN BUTTON IS CILCKED
+    const handleSubmit = async () => {
+
+        const { email, password } = Data
+
+
+        // IF THERE IS AN SERVER DO THIS
+
+        // try {
+
+        //     if (!email || !password) {
+
+        //         setVaildStatus(true)
+
+
+        //     } else {
+
+        //         const result = await UserLogin({ email, password })
+
+        //         if (result.status == 200) {
+
+        //             sessionStorage.setItem("Username", email)
+        //             toast.success(result.message)
+
+        //         }
+        //         else {
+
+
+        //             toast.error(result.message)
+
+
+        //         }
+
+        //     }
+
+        // }
+        // catch(err){
+
+        //     console.log(err);
+        // }
+
+
+        if (!email || !password) {
+
+            setVaildStatus(true)
+
+        } else {
+
+
+            const Result = Users.find((item) => (item.email == email))
+
+
+
+
+            if (Result) {
+
+                sessionStorage.setItem("Username", email)
+
+                navigate('/dash')
+
+                setVaildStatus(false)
+
+            } else {
+
+                setVaildStatus(true)
+
+            }
+
+
+        }
+
+
+    }
+
+
+
 
 
 
@@ -16,6 +125,7 @@ function Login() {
             <section className='login-main d-flex  justify-content-around align-items-end pb-3 pt-3'>
 
 
+                {/* FOOTer-1 */}
                 <div className='foot-link'>
 
                     <p>Copyright &copy; 2023 Access Home Lab Solutions</p>
@@ -70,13 +180,13 @@ function Login() {
 
                             <h6 className='text-center'>Login</h6>
 
-                            <form>
+                            <form onSubmit={(e) => { e.preventDefault() }}>
 
 
                                 <div className='w-100 login-input'>
 
                                     <label htmlFor="">Username</label> <br />
-                                    <input type="email" placeholder='Enter email id' />
+                                    <input type="email" onChange={(e) => { setData({ ...Data, email: e.target.value }) }} placeholder='Enter email id' />
 
                                 </div>
 
@@ -84,14 +194,14 @@ function Login() {
                                 <div className='w-100 login-input mt-2'>
 
                                     <label htmlFor="">Password</label> <br />
-                                    <input type="password" placeholder='password' />
+                                    <input type="password" onChange={(e) => { setData({ ...Data, password: e.target.value }) }} placeholder='password' />
 
                                 </div>
 
 
                                 <div className='d-flex justify-content-center mt-3 mb-4'>
 
-                                    <button type='submit' className='login-btn'>SUBMIT</button>
+                                    <button type='submit' onClick={handleSubmit} className='login-btn'>SUBMIT</button>
 
                                 </div>
 
@@ -110,13 +220,21 @@ function Login() {
 
                     </div>
 
+                    {
+
+                        VaildStatus &&
+
+                        <p className='text-center' style={{ color: "red", textDecoration: 'underline', fontWeight: '600', fontSize: 'smaller' }}>Wrong Credentials! your email Id or Password entered is Wrong</p>
+
+                    }
+
 
                     {/* Vector-3 */}
                     <div className='d-flex align-items-center mt-3'>
 
                         <img src="/Vector 5.png" className='img-fluid' style={{ marginLeft: '-1rem' }} alt="" />
 
-                        <h5 style={{ color: '#1F6CAB', marginLeft: '4rem',fontWeight:'bold' }}><i class="fa-solid fa-phone"></i> (+91)9288008801</h5>
+                        <h5 style={{ color: '#1F6CAB', marginLeft: '4rem', fontWeight: 'bold' }}><i class="fa-solid fa-phone"></i> (+91)9288008801</h5>
 
 
                     </div>
@@ -134,15 +252,17 @@ function Login() {
 
 
 
-                {/* Footer */}
+                {/* Footer-2 */}
                 <div className='d-flex justify-content-between foot-link'>
 
-                    {/* <p>Copyright &copy; 2023 Access Home Lab Solutions</p> */}
 
                     <p>All Right Reserved | <a href="">Terms and Conditions</a> | <a href="">Privacy Policy</a></p>
 
                 </div>
 
+
+
+                <Toaster richColors position='top-center' />
 
 
             </section>
